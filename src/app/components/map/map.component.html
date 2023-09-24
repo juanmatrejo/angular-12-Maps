@@ -1,0 +1,26 @@
+<div class="main-container">
+    <mat-card class="example-card">
+        <mat-card-title>Map</mat-card-title>
+        <mat-card-content>
+            <google-map height="500px" width="900px" [center]="center" [zoom]="zoom" (mapClick)="addMarker()"
+                (mapMousemove)="move($event)">
+                <ng-container *ngFor="let item of markersMap; let idx = index">
+                    <map-marker #marker="mapMarker" [position]="item.position"
+                        (mapClick)="openInfoWindow(marker, infoWindow)">
+                    </map-marker>
+                    <map-info-window #infoWindow="mapInfoWindow">
+                        <strong>{{item.title}}</strong>
+                        <p>
+                            {{item.description}}
+                        </p>
+                        <div>
+                            <button (click)="editMarker(item)" mat-raised-button color="primary">Edit</button>
+                            <button (click)="deleteMarker(idx)" mat-raised-button color="accent">Delete</button>
+                        </div>
+                    </map-info-window>
+                </ng-container> </google-map>
+            <div>Latitude: {{display?.lat}}</div>
+            <div>Longitude: {{display?.lng}}</div>
+        </mat-card-content>
+    </mat-card>
+</div>

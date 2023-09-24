@@ -1,0 +1,16 @@
+<div class="main-container">
+	<form [formGroup]="_formGroup">
+
+		<mat-form-field class="example-full-width">
+			<input matInput placeholder="Title" formControlName="title">
+		</mat-form-field>
+
+		<mat-form-field>
+			<textarea matInput rows="3" placeholder="Description" formControlName="description"></textarea>
+		</mat-form-field>
+
+		<button (click)="saveChanges()" mat-raised-button color="primary" type="button">Save</button>
+		<button (click)="close()" mat-raised-button color="accent" type="button">Cancel</button>
+
+	</form>
+</div>
